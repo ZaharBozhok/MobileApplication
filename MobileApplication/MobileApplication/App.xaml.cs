@@ -5,6 +5,11 @@ using MobileApplication.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using MobileApplication.DependencyInjection;
+using MobileApplication.Abstractions.VersionInfoService;
+using MobileApplication.Abstractions.VersionInfo;
+using MobileApplication.VersionInfoAndroid.VersionInfo;
+using MobileApplication.Infrastructure.Repositories;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MobileApplication
@@ -31,6 +36,9 @@ namespace MobileApplication
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterSingleton<IVersionInfoRepository<VersionInfo>, AndoidVersionInfoRepository>();
+            containerRegistry.RegisterSingleton<IVersionInfoService<IVersionInfo>, VersionInfoService>();
+            containerRegistry.RegisterSingleton<IReadOnlyVersionInfoService<IVersionInfo>, VersionInfoService>();
         }
     }
 }

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="7.0.0.396" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MobileApplication.Abstractions\MobileApplication.Abstractions.csproj" />
+    <ProjectReference Include="..\MobileApplication.AndroidVersions\MobileApplication.VersionInfoAndroid.csproj" />
+    <ProjectReference Include="..\MobileApplication.Infrastructure\MobileApplication.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

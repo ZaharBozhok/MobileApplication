@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using MobileApplication.Abstractions.VersionInfo;
+using MobileApplication.Abstractions.VersionInfoService;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -10,6 +12,7 @@ namespace MobileApplication.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+
 
         private string _title;
         public string Title

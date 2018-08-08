@@ -9,4 +9,9 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\MobileApplication.Abstractions\MobileApplication.Abstractions.csproj" />
+    <ProjectReference Include="..\..\MobileApplication.DependencyInjection\MobileApplication.DependencyInjection.csproj" />
+  </ItemGroup>
+
 </Project>

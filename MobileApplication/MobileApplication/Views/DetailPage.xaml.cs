@@ -2,9 +2,9 @@
 
 namespace MobileApplication.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class DetailPage : ContentPage
     {
-        public MainPage()
+        public DetailPage()
         {
             InitializeComponent();
         }

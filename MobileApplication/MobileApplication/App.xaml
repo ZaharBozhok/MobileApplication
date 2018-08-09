@@ -3,9 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
              x:Class="MobileApplication.App">
-	<Application.Resources>
-
-		<!-- Application resource dictionary -->
-
-	</Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS"></On>
+                            <On Platform="Android">LCD_Solid.ttf#LCD Solid</On>
+                            <On Platform="UWP">/Assets/Fonts/LCD_Solid.ttf#LCD Solid</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>

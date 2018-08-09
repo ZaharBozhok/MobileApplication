@@ -8,25 +8,46 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace MobileApplication.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        protected IVersionInfoService<IVersionInfo> Service { get; private set; }
-        public MainPageViewModel(INavigationService navigationService, IVersionInfoService<IVersionInfo> service) : base(navigationService)
+        private IEnumerable<PreviewVersionInfoModel> versionsList;
+        private DelegateCommand<object> _itemTappedCommand;
+        public DelegateCommand<object> ItemTappedCommand =>
+            _itemTappedCommand ?? (_itemTappedCommand = new DelegateCommand<object>(ExecuteItemTappedCommand, CanExecuteItemTappedCommand));
+
+        async void ExecuteItemTappedCommand(object parameter)
         {
-            Service = service;
-            Title = "Hello world";
+            NavigationParameters navigationParameters = new NavigationParameters();
+            navigationParameters.Add("Id", (Guid)parameter);
+            await NavigationService.NavigateAsync("DetailPage", navigationParameters);
         }
-        //public async virtual void OnNavigatingTo(NavigationParameters parameters)
-        //{
-        //    var res = await _service.GetVersionInfoAsync(Guid.NewGuid(),CancellationToken.None);
-        //    PreviewVersionInfoModel fullVersionInfoModel = res.ToPreviewVersionInfoModel();
-        //    Title = fullVersionInfoModel.CodeName;
-        //}
+
+        bool CanExecuteItemTappedCommand(object parameter)
+        {
+            if(parameter is Guid)
+                return true;
+            return false;
+        }
+
+        public IEnumerable<PreviewVersionInfoModel> VersionsList
+        {
+            get { return versionsList; }
+            set { SetProperty(ref versionsList, value); }
+        }
+        public MainPageViewModel(INavigationService navigationService, IVersionInfoService<IVersionInfo> service) : base(navigationService, service)
+        {
+            Title = "Versions";
+        }
+        public override async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            var res = await VersionInfoService.GetVersionsInfoAsync(CancellationToken.None).ConfigureAwait(false);
+            VersionsList = (res.Select(x => x.ToPreviewVersionInfoModel())).ToList();
+        }
+
 
     }
 }

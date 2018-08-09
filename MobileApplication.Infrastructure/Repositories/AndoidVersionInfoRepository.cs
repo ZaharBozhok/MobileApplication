@@ -13,14 +13,119 @@ namespace MobileApplication.Infrastructure.Repositories
 {
     public class AndoidVersionInfoRepository : InMemoryRepostiry<AndroidVersionInfo>, IVersionInfoRepository<VersionInfo>
     {
+        static DateTime getRandomDate()
+        {
+            Random rnd = new Random();
+            return new DateTime(rnd.Next(2008, 2019), rnd.Next(1, 13), rnd.Next(1, 29));
+        }
         static AndoidVersionInfoRepository()
         {
+            string riba = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+            
             Storage.Add(new AndroidVersionInfo(
                 Guid.NewGuid(),
-                "HelloWorld",
+                "Petit Four",
                 "1.0",
-                new DateTime(2022, 0, 3),
-                "Description"
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Cupcake",
+                "1.5",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Donut",
+                "2.0 – 2.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Eclair",
+                "2.0 – 2.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Froyo",
+                "2.2 – 2.2.3",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Gingerbread",
+                "2.3 – 2.3.7",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Honeycomb",
+                "3.0 – 3.2.6",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Ice Cream Sandwich",
+                "4.0 – 4.0.4",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Jelly Bean",
+                "4.1 – 4.3.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Kit Kat",
+                "4.4 – 4.4.4",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Lollypop",
+                "5.0 – 5.1.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Marshmallow",
+                "6.0 – 6.0.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Nougat",
+                "7.0 – 7.1.2",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Oreo",
+                "8.0 – 8.1",
+                getRandomDate(),
+                riba
+                ));
+            Storage.Add(new AndroidVersionInfo(
+                Guid.NewGuid(),
+                "Pie",
+                "9.0",
+                getRandomDate(),
+                riba
                 ));
         }
         public virtual async Task<VersionInfo> CreateVersionInfoAsync(string codeName, string versionNumber, DateTime initialReleaseDate, string descriprion, CancellationToken token)

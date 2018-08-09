@@ -12,7 +12,7 @@ namespace MobileApplication.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
-
+        protected IVersionInfoService<IVersionInfo> VersionInfoService {get; private set; }
 
         private string _title;
         public string Title
@@ -21,9 +21,10 @@ namespace MobileApplication.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IVersionInfoService<IVersionInfo> service)
         {
             NavigationService = navigationService;
+            VersionInfoService = service;
         }
 
         public virtual void OnNavigatedFrom(NavigationParameters parameters)

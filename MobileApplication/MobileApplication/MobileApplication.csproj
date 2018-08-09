@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>Full</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,9 +13,19 @@
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
   </ItemGroup>
 
+
   <ItemGroup>
     <ProjectReference Include="..\..\MobileApplication.Abstractions\MobileApplication.Abstractions.csproj" />
     <ProjectReference Include="..\..\MobileApplication.DependencyInjection\MobileApplication.DependencyInjection.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
